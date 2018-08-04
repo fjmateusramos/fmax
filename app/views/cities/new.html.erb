@@ -1,0 +1,17 @@
+<%= form_for :city, url: cities_path do |f| %>
+<div class="row">
+	<div class="col-6 col-md-6">
+		<div class="form-group">
+			<%= f.label :ciudad, "Ciudad" %>
+			<%= f.text_field :ciudad, class: 'form-control'%>
+		</div>
+		<div class="form-group">
+			<%= f.label :pais, "Pais" %>
+			<%= f.text_field :pais, class: 'form-control'%>
+		</div>
+	</div>
+</div>
+<div class="actions">
+    <%= f.submit "Enviar" , class:'btn btn-lg btn-primary btn-block'%>
+</div>
+<% end %>

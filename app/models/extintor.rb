@@ -1,0 +1,2 @@
+class Extintor < ApplicationRecord
+end

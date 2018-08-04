@@ -1,0 +1,204 @@
+<% @lead = Lead.new %>
+<%= form_for @lead do |f| %>
+<% if @lead.errors.any? %>
+<div id="alert alert-danger">
+	<h4 class="alert-heading">Oh No!</h4>
+	<p>Ha ocurrido un error</p>
+<% end %>
+<div class="row">
+	<div class="form-group col-md-6">
+		<%= f.label :nombres, 'Nombres'%>
+		<div class="input-group">
+           	<span class="input-group-addon">
+           		<i class="glyphicon glyphicon-user"></i>
+           	</span>			
+		<%= f.text_field :nombres, class: 'form-control', placeholder:'Nombres', id:'nombresLead' %>
+		<% if @lead.errors[:nombres].any? %>
+			<span class="badge badge-pill badge-danger">
+				<%= @lead.errors[:nombres].first %>
+			</span>
+		<% end %>
+		</div>
+	</div>
+	<div class="form-group col-md-6">
+		<%= f.label :apellidos, 'Apellidos'%>
+		<div class="input-group">
+           	<span class="input-group-addon">
+           		<i class="glyphicon glyphicon-user"></i>
+           	</span>
+		<%= f.text_field :apellidos, class: 'form-control', placeholder:'Apellidos', id:'apellidosLead' %>
+		<% if @lead.errors[:apellidos].any? %>
+			<span class="badge badge-pill badge-danger">
+				<%= @lead.errors[:apellidos].first %>
+			</span>
+		<% end %>
+	</div>
+	</div>
+</div>
+<div class="row">
+	<div class="form-group col-md-4">
+		<%= f.label :email, 'Correo electrónico'%>
+		<div class="input-group">
+			<span class="input-group-addon">
+				<i class="glyphicon glyphicon-envelope"></i>
+			</span>
+			<%= f.text_field :email, class: 'form-control', placeholder:'Correo electrónico', id:'emailLead' %>
+			<% if @lead.errors[:email].any? %>
+			<span class="badge badge-pill badge-danger">
+				<%= @lead.errors[:email].first %>
+			</span>
+		<% end %>
+		</div>
+	</div>
+	<div class="form-group col-md-4">
+		<%= f.label :telefono, 'Teléfono'%>
+		<div class="input-group">
+			<span class="input-group-addon">
+				<i class="glyphicon glyphicon-phone-alt"></i>
+			</span>
+		<%= f.text_field :telefono, class: 'form-control', placeholder:'Teléfono' , id:'telefonoLead' %>
+		</div>
+	</div>
+	<div class="form-group col-md-4">
+		<%= f.label :celular, 'Celular'%>
+		<div class="input-group">
+			<span class="input-group-addon">
+				<i class="glyphicon glyphicon-earphone"></i>
+			</span>
+		<%= f.text_field :celular , class: 'form-control', placeholder:'Celular', id:'celularLead' %>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6" style="padding-bottom: 5px;">
+		<label for=Pregunta class="form-check-label">
+			Le gustaría agendar un servicio?
+		</label>
+	</div>
+	<div class="custom-control custom-radio custom-control-inline" data-toggle="buttons-radio">
+		<div class="col-md-3 text-center">
+			<%= f.label :agendo_serv, "Si", :value => "true" , class:'custom-control-label'  %>
+		    <%= f.radio_button :agendo_serv, "Si" , class:'custom-control-input form-check-input with-gap' , id:'Agendo' %>
+		</div>
+		<div class="col-md-3">
+		    <%= f.label :agendo_serv, "No", :value => "false" , class:'custom-control-label' %>
+		    <%= f.radio_button :agendo_serv, "No", :checked => true , class:'custom-control-input form-check-input with-gap', id:'NoAgendo' %>
+  		</div>
+	</div>
+</div>
+<div class="row hidden" id="section_tiposervicio">
+	<div class="form-group col-md-12">
+		<%= f.label :tipo_servicio, "Tipo de Servicio" %>
+		 <div class="input-group">
+             <span class="input-group-addon" style="max-width: 100%;">
+             	<i class="glyphicon glyphicon-list"></i>
+             </span>
+		<%= f.select :tipo_servicio, ["--","Control Integral de Plagas" , "Recarga de Extintores"],{}, {class: "form-control" , id:'TipoServicioLead'}%>
+		</div>
+	</div>
+</div>
+<div class="row hidden" id="section_date">
+	<div class="form-group col-md-3">
+		<%= f.label :ciudad, "Ciudad" %>
+		<div class="input-group">
+             <span class="input-group-addon" style="max-width: 100%;">
+             	<i class="glyphicon glyphicon-th"></i>
+             </span>
+		<%= f.select :ciudad, ["--","Cali", "Bogota","Medellin"],{}, {class: "form-control", id:"CiudadLead"}%>
+		</div>
+	</div>
+	<div class="form-group col-md-6">
+		<%= f.label :fecha_de_servicio, "Fecha en que necesitas el servicio" %>
+            <div class='input-group date' id='datetimepicker1'>
+            	<span class="input-group-addon">    
+                        <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                 <%= f.text_field :fecha_de_servicio, "data-provide" => 'datetimepicker', class: 'form-control' , id:'FechaServicioLead' %>
+            </div>
+    </div>
+    <div class="form-group col-md-3">
+		<%= f.label :hora_de_servicio, "Horario" %>
+		<div class="input-group">
+	    	<span class="input-group-addon">    
+		                <span class="glyphicon glyphicon-time"></span>
+		    </span>	
+		<%= f.select :hora_de_servicio, ['--','Mañana','Medio día','Tarde','Noche'], {}, {class: "form-control", id:'HoraServicioLead'} %>
+		</div>
+	</div>
+</div>
+<div class="row hidden" id="section_dir">
+	<div class="form-group col-md-12">
+		<%= f.label :direccion, "Dirección" %>
+		<div class="input-group">
+	    	<span class="input-group-addon">    
+		         <span class="glyphicon glyphicon-road"></span>
+		    </span>
+			<%= f.text_field :direccion, class: 'form-control', placeholder:'Dirección', id:'DireccionLead' %>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="form-group col-md-12">
+		<%= f.label :observaciones, "Observaciones (opcional)" %>
+		<div class="input-group">
+			<span class="input-group-addon">
+				<i class="glyphicon glyphicon-text-size"></i>
+			</span>
+		<%= f.text_area :observaciones, class:'form-control' , id:'ObservacionesLead' %>
+		</div>
+	</div>
+	<div class="hidden">
+		<%= f.text_area :estado, :value => "Por contactar"  %>
+	</div>
+</div>
+
+<script type="text/javascript">
+	
+
+    $(function () {
+        $('#datetimepicker1').datetimepicker({
+        	format: 'DD/MM/YYYY',
+        });
+    });
+    $("#Agendo").click(function(){
+    	$("#section_dir").removeClass("hidden");
+    	$("#section_date").removeClass("hidden");
+    	$("#section_tiposervicio").removeClass("hidden");
+	});
+	$("#NoAgendo").click(function(){
+    	$("#section_dir").addClass("hidden");
+    	$("#section_date").addClass("hidden");
+   		$("#section_tiposervicio").addClass("hidden");
+   		$("#DireccionLead").val('');
+   		$("#HoraServicioLead").val('--');
+   		$("#FechaServicioLead").val('');
+   		$("#CiudadLead").val('--');
+   		$("#TipoServicioLead").val('--');
+    });	
+   	$("#CancelarLead").click(function(){
+   		$("#DireccionLead").val('');
+   		$("#HoraServicioLead").val('--');
+   		$("#FechaServicioLead").val('');
+   		$("#CiudadLead").val('--');
+   		$("#TipoServicioLead").val('--');
+   		$("#nombresLead").val('');
+   		$("#apellidosLead").val('');
+   		$("#emailLead").val('');
+   		$("#telefonoLead").val('');
+   		$("#celularLead").val('');
+   		$("#NoAgendo").val('True')
+   	});
+
+
+</script>
+<div class="row">
+	<div class="col-md-3"></div>
+	<div class="col-md-3">
+    <%= f.submit "Guardar" ,class:'btn btn-primary btn-lg' , :style => 'border-radius:5px;'%>
+	</div>
+	<div class="col-md-3">
+	<a href="http://localhost:3000/"><input type="button" value="Cancelar" class="btn btn-warning btn-lg" id="CancelarLead" style="border-radius: 5px;" /></a>
+	</div>
+	<div class="col-md-3"></div>
+</div>
+<% end %>

@@ -1,0 +1,17 @@
+<tr>
+	<th> <%= lead.id %> </th>
+	<td><%= lead.nombres %> <%= lead.apellidos %></td>
+	<td><%= lead.agendo_serv %></td>
+	<td><%= lead.estado %></td>
+	<td><%= lead.tipo_servicio %></td>
+	<td><%= lead.ciudad %></td>
+	<td><%= lead.fecha_de_servicio %></td>
+	<td style="padding: 3px;">
+	<%= link_to edit_lead_path(lead), style:'background-color: transparent;' do %>
+    <button type="button" class="btn btn-primary btn-circle">
+    	<span class="glyphicon glyphicon-pencil"></span>
+    </button>
+	<% end %>
+	</td>
+
+</tr>

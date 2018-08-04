@@ -1,0 +1,60 @@
+  <% if notice %>
+  <div id="notice_wrapper">
+    <p class="notice" style="padding: 3.5rem 0;
+    text-align: center;
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;"> <%= notice %> </p>
+  </div>
+<% elsif alert %>
+  <div id="notice_wrapper">
+    <p class="alert" style="padding: 3.5rem 0;
+    text-align: center;
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;"> <%= alert %> </p>
+  </div>
+<% end %>
+<%= favicon_link_tag 'favicon.ico' %>
+<%= render 'navbar' %>
+<%= render 'header' %>
+<%= render 'bg_primary' %>
+<%= render 'services' %>
+<%= render 'portfolio' %>
+<%= render 'call_to_action' %>
+<%= render 'contact' %>
+<div class="modal fade" id="leadWebPage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h2 class="modal-title text-center" id="myModalLabel">Contáctanos</h2>
+        <small class="form-text text-muted">
+          Necesitas un servicio o quieres más información?
+        </small><br>
+        <small id="passwordHelpBlock" class="form-text text-muted">
+        Diligencia el formulario a continuación y uno de nuestros asesores te contactará en breve</small>
+      </div>
+      <div class="modal-body">
+        <%= render "leads/new"%>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function () {
+    setTimeout(function(){
+      $("#notice_wrapper").fadeOut("slow", function(){
+      $(this).remove();
+      });
+    }, 4500);
+  });
+</script>
+
+
+
+

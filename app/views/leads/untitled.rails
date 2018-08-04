@@ -1,0 +1,39 @@
+<table class="datatable">
+<thead>
+	<tr>
+	<th>#</th>
+	<th>Nombre</th>
+	<th>Correo Electrónico</th>
+	<th>Celular</th>
+	<th>Agendó?</th>
+	<th>Estado</th>
+	<th>Servicio</th>
+	<th>Ciudad</th>
+	<th>Fecha</th>
+	</tr>
+</thead>	
+<tbody>
+	<% @leads.each do |lead| %>
+	<tr>
+	<td> <%= lead.id %> </td>
+	<td><%= lead.nombres %> <%= lead.apellidos %></td>
+	<td><%= lead.email %></td>  
+	<td><%= lead.celular %></td>
+	<td><%= lead.agendo_serv %>
+	</td>
+	<td><%= lead.estado %></td>
+	<td><%= lead.tipo_servicio %></td>
+	<td><%= lead.ciudad %></td>
+	<td><%= lead.fecha_de_servicio %></td>
+	<td><%= link_to 'Editar', edit_lead_path(lead) , {:class => "btn btn-sm btn-primary btn-block", :style => "border-radius: 5px;"}  %></td>
+	<td><%= link_to 'Eliminar', lead , method: :delete , data: {
+								  		confirm: 'Estás seguro?',
+								  		'confirm-button-text': 'Estoy seguro',
+								  		'cancel-button-text': 'No, Cancelar',
+								  		'confirm-button-color': '#66CD00',
+								  		'sweet-alert-type': 'info',
+								  		text: 'De eliminar este registo?'}, class:'btn btn-sm btn-danger btn-block' , style:'border-radius: 5px;' %></td>
+	</tr>
+	<%end%>
+</tbody>
+</table>

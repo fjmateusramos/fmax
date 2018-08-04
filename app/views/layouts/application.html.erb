@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fumigadora Max</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <%= favicon_link_tag 'favicon.ico' %>
+  </head>
+
+  <body>
+    <% if notice %>
+  <div id="notice_wrapper">
+    <p class="notice" style="padding: 2.5rem 0;
+    text-align: center;
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;"> <%= notice %> </p>
+  </div>
+<% elsif alert %>
+  <div id="notice_wrapper">
+    <p class="alert" style="padding: 2.5rem 0;
+    text-align: center;
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;"> <%= alert %> </p>
+  </div>
+<% end %>
+    <%= yield %>
+  </body>
+</html>
+
