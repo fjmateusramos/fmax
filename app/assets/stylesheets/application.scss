@@ -1,4 +1,4 @@
-/*
+ NoMethodError: undefined method `[]' for nil:NilClass/*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -20,3 +20,4 @@
  *= require sweetalert2
  *= require_tree
  */
+@import "bootstrap-sprockets";
